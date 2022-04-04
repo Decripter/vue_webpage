@@ -159,4 +159,9 @@ export default {
       .slider.round:before {
         border-radius: 50%;
       }
+
+      .navbar-menu.is-active {
+        position: absolute;
+        width: 100vw;
+      }
 </style>
