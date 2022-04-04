@@ -4,15 +4,16 @@
               <a class="navbar-item" >
                 <img src="../assets/logo.png" width="30" height="28">
               </a>
-          
-              <a @click="to_open_menu" role="button" class="navbar-burger" :class="[open_menu ? 'is-active' : '']" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+
+              <a @click="toOpenMenu" role="button" class="navbar-burger" :class="[openMenu ? 'is-active' : '']" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
                 <span aria-hidden="true"></span>
                 <span aria-hidden="true"></span>
                 <span aria-hidden="true"></span>
               </a>
+
             </div>
           
-            <div id="navbarBasicExample" class="navbar-menu" :class="[open_menu ? 'is-active' : '']">
+            <div id="navbarBasicExample" class="navbar-menu" :class="[openMenu ? 'is-active' : '']">
               <div class="navbar-start">
                 <a class="navbar-item">
                   Home
@@ -48,8 +49,8 @@
               <div class="navbar-end">
                 <div class="navbar-item">
                   <label  class="switch">
-                  <input @click="dark_mode_toggle" type="checkbox" checked>
-                  <span class="slider round" :class="[dark_mode ? '' : '']"></span>
+                  <input @click="dark_mode_toggle" type="checkbox" v-bind:checked="theme_dark[0]">
+                  <span class="slider round" ></span>
                 </label>
               </div>
                 <div class="navbar-item">
@@ -70,24 +71,30 @@
 <script>
 export default {
   name: 'NavBar',
+  props:["theme_dark"],
   data(){
     return {
-      open_menu: false
+      openMenu: false
 
     }
   },
+  
+
   methods:{
     
     dark_mode_toggle(){
      this.$emit('on_change_theme')
+     if(this.openMenu){
+       this.openMenu = false
+     }
     },
-    to_open_menu(){
-      this.open_menu=!this.open_menu
+    toOpenMenu(){
+      this.openMenu=!this.openMenu
+
     }
   },
-  props: {
-   
-  },
+  
+  
   
 }
 </script>

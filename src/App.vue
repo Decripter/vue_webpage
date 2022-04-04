@@ -1,7 +1,8 @@
 <template>
-<div :class="[theme_is_dark ? 'modal-background has-text-white' : '' ]">
-<NavBar @on_change_theme="toggle_theme" />
-<Contents/>
+<div :class="[theme_is_dark ? 'has-background-dark has-text-white' : '' ]" 
+style="transition: background-color 500ms ease-out 5ms;height: 100vh;">
+<NavBar @on_change_theme="toggle_theme" :theme_dark="[theme_is_dark ? true : false]"/>
+<Contents :themeDark="[theme_is_dark ? true : false]"/>
 </div>
 </template>
 
